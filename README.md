@@ -2,16 +2,15 @@
 ## About Me Quiz
 # LAB01-NumbersGame
 
-
-*Author: Enrique Rivera*
+Author: Enrique Rivera
 
 ----
 
 ## Description
-***[Tell me about your application, should be about a paragraph]***
-This is a C# console application that will ask a user several questions about me, the
-developer. There are multiple question types ranging from inputting a number to True or False.
-At the end of the game the user receives their total score.
+This is a C# console application that will request the user to input a random number (this number will be the length of the Array)
+and then that number of random numbers. Example: "random number: 4. Now it will ask you for 4 random numbers."
+The program will then prompt you to give it some more numbers and it will do math (add all the numbers you gave it, multiply by a number of your choosing,
+and then divide it by yet, another number).
 
 ---
 
@@ -19,19 +18,10 @@ At the end of the game the user receives their total score.
 Clone this repository to your local machine.
 
 ```
-$ git clone [repo clone url here]
+paste the next line into your terminal/command line in the location you wish to clone this repo.
+$ git clone https://github.com/Alejandroid101/LAB01-NumbersGame.git
 ```
 
-### To run the program from Visual Studio:
-Select ```File``` -> ```Open``` -> ```Project/Solution```
-
-Next navigate to the location you cloned the Repository.
-
-Double click on the ```Lab01-About-Me``` directory.
-
-Then select and open ```AboutMe.sln```
-
----
 
 ### Visuals
 ***[Add screenshots of your application in action]***
