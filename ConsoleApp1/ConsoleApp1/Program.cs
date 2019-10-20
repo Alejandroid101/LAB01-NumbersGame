@@ -7,26 +7,39 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the numbers game!");
-            StartSequence();
+            try
+            {
+                StartSequence();
+            }
+            catch
+            {
+                Console.WriteLine("Seems like you did something wrong");
+            }
+            finally
+            {
+                Console.WriteLine("The program has been completed");
+            }
         }
 
         public static void StartSequence()
         {
-            Console.Write("Enter a number greater than 0!");
+            Console.WriteLine("Enter a number greater than 0:");
             string userNumber = Console.ReadLine();
             int usIn = Convert.ToInt32(userNumber);
 
             int[] newArr = new int[usIn];
+
             //Start calling the Methods and capture their values
             int[] popArray = Populate(newArr);
             int arrSum = GetSum(popArray);
-            //int product = GetProduct(newArr, arrSum);
-            //int quotient = GetQuotient(product);
+            int product = GetProduct(newArr, arrSum);
+            decimal quotient = GetQuotient(product);
+
             Console.WriteLine($"Your array size is {userNumber}");
-            Console.WriteLine($"The numbers in the Array are: ", string.Join(", ", popArray));
+            Console.WriteLine("The numbers in the Array are: {0}", string.Join(", ", popArray));
             Console.WriteLine($"The sum of the array elements is {arrSum}");    
-            //Console.WriteLine(product);
-            //Console.WriteLine(quotient);
+            Console.WriteLine($"{arrSum} * {product/arrSum} = {product}");
+            Console.WriteLine($"{product} / {quotient * 5} = {quotient}");
 
 
         }
@@ -50,18 +63,51 @@ namespace ConsoleApp1
             {
                 sum += arr[i];
             }
+            Console.WriteLine("Good number!");
+
+            if(sum < 20)
+            {
+                throw new Exception($"Value of { sum } is too low");
+            }
+            return sum;
+        }
+        public static int GetProduct(int[] arr, int sum)
+        {
+            int product = 0;
+            Console.WriteLine($"Select a number between 1 and {arr.Length}");
+            string userNumber2 = Console.ReadLine();
+            int usIn2 = Convert.ToInt32(userNumber2);
+
             try
             {
-                Console.WriteLine("Good number!");
-            }
-            catch
-            {
-                if(sum < 20)
+                if (usIn2 <= arr.Length)
                 {
-                    throw new Exception($"Value of { sum } is too low");
+                    product = sum * arr[usIn2 - 1];
                 }
             }
-                return sum;
+            catch (IndexOutOfRangeException e)
+            {
+                throw e; 
+            }
+            return product;
+        }
+        public static decimal GetQuotient(decimal prod)
+        {
+            int quotient = 0;
+            Console.WriteLine($"Select a number to divide your product ({prod}) by");
+            string userNumber3 = Console.ReadLine();
+            decimal usIn3 = Convert.ToInt32(userNumber3);
+
+            try
+            {
+                decimal quo = decimal.Divide(prod, usIn3);
+                return quo;
+            }
+            catch (ArithmeticException e)
+            {
+                Console.WriteLine($"ArithmeticException Handler: {e}");
+            }
+            return quotient;
         }
     }
 }
